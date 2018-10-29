@@ -9,6 +9,7 @@ import com.facebook.react.uimanager.ViewManager;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import com.reactnative.photoview.viewpager.ReactViewPagerManager;
 
 /**
  * @author alwx (https://github.com/alwx)
@@ -24,6 +25,7 @@ public class PhotoViewPackage implements ReactPackage {
     public List<ViewManager> createViewManagers(ReactApplicationContext reactContext) {
         List<ViewManager> viewManagers = new ArrayList<>();
         viewManagers.add(new PhotoViewManager(reactContext));
+        viewManagers.add(new ReactViewPagerManager());
         return viewManagers;
     }
 
