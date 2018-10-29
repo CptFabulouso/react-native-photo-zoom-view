@@ -217,13 +217,12 @@
 #pragma mark - Layout
 
 - (void)layoutSubviews {
-
     // Update tap view frame
     _tapView.frame = self.bounds;
 
     // Super
     [super layoutSubviews];
-
+    
     // Center the image as it becomes smaller than the size of the screen
     CGSize boundsSize = self.bounds.size;
     CGRect frameToCenter = _photoImageView.frame;
@@ -404,6 +403,11 @@
 - (void)setScale:(NSInteger)scale {
     _scale = scale;
     [self setZoomScale:_scale];
+}
+
+- (void)resetScale {
+    CGFloat zoomScale = [self initialZoomScaleWithMinScale];
+    [self setZoomScale:zoomScale animated:YES];
 }
 
 #pragma mark - Private

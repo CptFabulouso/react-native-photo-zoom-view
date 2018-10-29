@@ -1,5 +1,7 @@
 #import "RNPhotoViewManager.h"
 #import "RNPhotoView.h"
+#import <React/RCTUIManager.h>
+#import <UIKit/UIKit.h>
 
 @implementation RNPhotoViewManager
 
@@ -26,5 +28,15 @@ RCT_EXPORT_VIEW_PROPERTY(onPhotoViewerLoadStart, RCTDirectEventBlock)
 RCT_EXPORT_VIEW_PROPERTY(onPhotoViewerLoad, RCTDirectEventBlock)
 RCT_EXPORT_VIEW_PROPERTY(onPhotoViewerLoadEnd, RCTDirectEventBlock)
 RCT_EXPORT_VIEW_PROPERTY(onPhotoViewerProgress, RCTDirectEventBlock);
+
+RCT_EXPORT_METHOD(resetScale:(nonnull NSNumber *)reactTag)
+{
+    [self.bridge.uiManager addUIBlock:^(RCTUIManager *uiManager, NSDictionary<NSNumber *, RNPhotoView *> *viewRegistry) {
+        RNPhotoView *view = viewRegistry[reactTag];
+        if ([view isKindOfClass:[RNPhotoView class]]) {
+            [view resetScale];
+        }
+    }];
+}
 
 @end

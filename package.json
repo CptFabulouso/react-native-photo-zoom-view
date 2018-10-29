@@ -28,6 +28,7 @@
     "url": "git://github.com/alwx/react-native-photo-view.git"
   },
   "dependencies": {
-    "prop-types": "^15.5.10"
+    "prop-types": "^15.5.10",
+    "react-timer-mixin": "^0.13.4"
   }
 }
