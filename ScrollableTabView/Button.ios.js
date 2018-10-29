@@ -1,7 +1,14 @@
-import { TouchableOpacity } from 'react-native';
+const React = require('react');
+const ReactNative = require('react-native');
+const {
+ TouchableOpacity,
+  View,
+} = ReactNative;
 
-const Button = props => {
-  return <TouchableOpacity {...props}>{props.children}</TouchableOpacity>;
+const Button = (props) => {
+  return <TouchableOpacity {...props}>
+    {props.children}
+  </TouchableOpacity>;
 };
 
-export default Button;
+module.exports = Button;
