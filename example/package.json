@@ -1,21 +1,22 @@
 {
-  "name": "example",
+  "name": "example2",
   "version": "0.0.1",
   "private": true,
   "scripts": {
     "start": "node node_modules/react-native/local-cli/cli.js start",
-    "test": "jest"
+    "test": "jest",
+    "postinstall": "tools/postinstall"
   },
   "dependencies": {
-    "react": "16.0.0-alpha.12",
-    "react-native": "0.47.2",
-    "react-native-photo-view": "^1.4.0"
+    "react": "16.6.0-alpha.8af6728",
+    "react-native": "0.57.3",
+    "react-native-photo-view": "git+https://github.com/CptFabulouso/react-native-photo-view#19a749b5af4c4f48b3e64541cb5632faf87cda43"
   },
   "devDependencies": {
-    "babel-jest": "20.0.3",
-    "babel-preset-react-native": "3.0.2",
-    "jest": "20.0.4",
-    "react-test-renderer": "16.0.0-alpha.12"
+    "babel-jest": "23.6.0",
+    "jest": "23.6.0",
+    "metro-react-native-babel-preset": "0.48.1",
+    "react-test-renderer": "16.6.0-alpha.8af6728"
   },
   "jest": {
     "preset": "react-native"

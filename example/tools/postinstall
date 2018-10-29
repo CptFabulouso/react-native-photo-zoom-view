@@ -1,0 +1,11 @@
+#!/bin/sh 
+
+echo "Xcode 10 fix"
+if [ ! -d node_modules/react-native/third-party ]; then
+  cd node_modules/react-native ; ./scripts/ios-install-third-party.sh ; cd ../../
+  cd node_modules/react-native/third-party/glog-0.3.5/ ; ./configure ; cd ../../../../
+
+  echo "Hacking glog signalhandler https://github.com/facebook/react-native/issues/16106"
+  glog_file=./node_modules/react-native/third-party/glog-0.3.5/src/signalhandler.cc
+  sed -i '' 's/(void\*)context->PC_FROM_UCONTEXT/NULL/g' $glog_file
+fi
