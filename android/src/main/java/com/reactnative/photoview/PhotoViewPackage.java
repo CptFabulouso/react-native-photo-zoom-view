@@ -7,9 +7,11 @@ import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.uimanager.ViewManager;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import com.reactnative.photoview.viewpager.ReactViewPagerManager;
+import com.reactnative.photoview.PhotoViewModule;
 
 /**
  * @author alwx (https://github.com/alwx)
@@ -31,6 +33,8 @@ public class PhotoViewPackage implements ReactPackage {
 
     @Override
     public List<NativeModule> createNativeModules(ReactApplicationContext reactContext) {
-        return Collections.emptyList();
+        return Arrays.<NativeModule>asList(
+                new PhotoViewModule(reactContext)
+        );
     }
 }
