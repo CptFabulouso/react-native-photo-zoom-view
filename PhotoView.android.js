@@ -1,11 +1,22 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { requireNativeComponent, View } from 'react-native';
+import {
+  requireNativeComponent,
+  NativeModules,
+  findNodeHandle,
+} from 'react-native';
 import ViewPropTypes from 'react-native/Libraries/Components/View/ViewPropTypes';
 
 const resolveAssetSource = require('react-native/Libraries/Image/resolveAssetSource');
 
 export default class PhotoView extends Component {
+  constructor(props) {
+    super(props);
+
+    this._photoRef = null;
+    this._photoHandle = null;
+  }
+
   static propTypes = {
     source: PropTypes.oneOfType([
       PropTypes.shape({
@@ -47,8 +58,24 @@ export default class PhotoView extends Component {
   };
 
   resetScale() {
-    console.warn('not implemented for android');
+    if (!this._photoHandle) {
+      console.warn('no handle');
+      return;
+    }
+    const PhotoViewManager = NativeModules.PhotoViewModule;
+    PhotoViewManager.resetScale &&
+      PhotoViewManager.resetScale(this._photoHandle);
   }
+
+  _setReference = ref => {
+    if (ref) {
+      this._photoRef = ref;
+      this._photoHandle = findNodeHandle(ref);
+    } else {
+      this._photoRef = null;
+      this._photoHandle = null;
+    }
+  };
 
   render() {
     const source = resolveAssetSource(this.props.source);
@@ -99,7 +126,7 @@ export default class PhotoView extends Component {
           : null,
       };
 
-      return <PhotoViewAndroid {...nativeProps} />;
+      return <PhotoViewAndroid ref={this._setReference} {...nativeProps} />;
     }
     return null;
   }
