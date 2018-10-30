@@ -5,8 +5,11 @@
 
 RCT_EXPORT_MODULE()
 
+RNPhotoView *rootView = nil;
+
 - (UIView *)view {
-    return [[RNPhotoView alloc] initWithBridge:self.bridge];
+    rootView = [[RNPhotoView alloc] initWithBridge:self.bridge];
+    return rootView;
 }
 
 RCT_REMAP_VIEW_PROPERTY(src, source, NSDictionary)
@@ -26,5 +29,12 @@ RCT_EXPORT_VIEW_PROPERTY(onPhotoViewerLoadStart, RCTDirectEventBlock)
 RCT_EXPORT_VIEW_PROPERTY(onPhotoViewerLoad, RCTDirectEventBlock)
 RCT_EXPORT_VIEW_PROPERTY(onPhotoViewerLoadEnd, RCTDirectEventBlock)
 RCT_EXPORT_VIEW_PROPERTY(onPhotoViewerProgress, RCTDirectEventBlock);
+
+RCT_EXPORT_METHOD(resetScale:(NSInteger)scale)
+{
+    if(rootView != nil){
+        [rootView resetScale];
+    }
+}
 
 @end

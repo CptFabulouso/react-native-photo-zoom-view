@@ -6,6 +6,7 @@
 @class RCTBridge;
 
 @interface RNPhotoView : UIScrollView <UIScrollViewDelegate, MWTapDetectingImageViewDelegate, MWTapDetectingViewDelegate>
+- (void) resetScale;
 
 #pragma mark - Data
 

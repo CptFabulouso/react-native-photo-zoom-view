@@ -217,7 +217,6 @@
 #pragma mark - Layout
 
 - (void)layoutSubviews {
-
     // Update tap view frame
     _tapView.frame = self.bounds;
 
@@ -404,6 +403,13 @@
 - (void)setScale:(NSInteger)scale {
     _scale = scale;
     [self setZoomScale:_scale];
+}
+
+- (void)resetScale {
+    CGFloat zoomScale = [self initialZoomScaleWithMinScale];
+    _scale = zoomScale;
+    self.zoomScale = zoomScale;
+    [self setZoomScale:zoomScale animated:YES];
 }
 
 #pragma mark - Private
