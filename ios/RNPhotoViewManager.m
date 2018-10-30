@@ -1,15 +1,14 @@
 #import "RNPhotoViewManager.h"
 #import "RNPhotoView.h"
+#import <React/RCTUIManager.h>
+#import <UIKit/UIKit.h>
 
 @implementation RNPhotoViewManager
 
 RCT_EXPORT_MODULE()
 
-RNPhotoView *rootView = nil;
-
 - (UIView *)view {
-    rootView = [[RNPhotoView alloc] initWithBridge:self.bridge];
-    return rootView;
+    return [[RNPhotoView alloc] initWithBridge:self.bridge];
 }
 
 RCT_REMAP_VIEW_PROPERTY(src, source, NSDictionary)
@@ -30,11 +29,14 @@ RCT_EXPORT_VIEW_PROPERTY(onPhotoViewerLoad, RCTDirectEventBlock)
 RCT_EXPORT_VIEW_PROPERTY(onPhotoViewerLoadEnd, RCTDirectEventBlock)
 RCT_EXPORT_VIEW_PROPERTY(onPhotoViewerProgress, RCTDirectEventBlock);
 
-RCT_EXPORT_METHOD(resetScale:(NSInteger)scale)
+RCT_EXPORT_METHOD(resetScale:(nonnull NSNumber *)reactTag)
 {
-    if(rootView != nil){
-        [rootView resetScale];
-    }
+    [self.bridge.uiManager addUIBlock:^(RCTUIManager *uiManager, NSDictionary<NSNumber *, RNPhotoView *> *viewRegistry) {
+        RNPhotoView *view = viewRegistry[reactTag];
+        if ([view isKindOfClass:[RNPhotoView class]]) {
+            [view resetScale];
+        }
+    }];
 }
 
 @end

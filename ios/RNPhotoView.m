@@ -222,7 +222,7 @@
 
     // Super
     [super layoutSubviews];
-
+    
     // Center the image as it becomes smaller than the size of the screen
     CGSize boundsSize = self.bounds.size;
     CGRect frameToCenter = _photoImageView.frame;
@@ -407,8 +407,6 @@
 
 - (void)resetScale {
     CGFloat zoomScale = [self initialZoomScaleWithMinScale];
-    _scale = zoomScale;
-    self.zoomScale = zoomScale;
     [self setZoomScale:zoomScale animated:YES];
 }
 
