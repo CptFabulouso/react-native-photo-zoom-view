@@ -1,5 +1,5 @@
 {
-  "name": "example2",
+  "name": "example",
   "version": "0.0.1",
   "private": true,
   "scripts": {
@@ -9,13 +9,13 @@
   },
   "dependencies": {
     "react": "16.6.0-alpha.8af6728",
-    "react-native": "0.57.3",
-    "react-native-photo-view": "git+https://github.com/CptFabulouso/react-native-photo-view#19a749b5af4c4f48b3e64541cb5632faf87cda43"
+    "react-native": "0.57.4",
+    "react-native-photo-view": "git+https://github.com/CptFabulouso/react-native-photo-view"
   },
   "devDependencies": {
     "babel-jest": "23.6.0",
     "jest": "23.6.0",
-    "metro-react-native-babel-preset": "0.48.1",
+    "metro-react-native-babel-preset": "0.49.0",
     "react-test-renderer": "16.6.0-alpha.8af6728"
   },
   "jest": {

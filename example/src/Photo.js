@@ -15,29 +15,29 @@ export default class Photo extends Component {
   _onScale = event => {
     console.log('_onScale', event.nativeEvent);
   };
-  // _onTap = event => {
-  //   console.log('_onTap', event.nativeEvent);
-  // };
-  // _onViewTap = event => {
-  //   console.log('_onViewTap', event.nativeEvent);
-  // };
-  // _onLoadStart = event => {
-  //   console.log('_onLoadStart', event.nativeEvent);
-  // };
-  // _onLoad = event => {
-  //   console.log('_onLoad', event.nativeEvent);
-  // };
-  // _onLoadEnd = event => {
-  //   console.log('_onLoadEnd', event.nativeEvent);
-  // };
-  // _onDrag = event => {
-  //   console.log('_onLoadEnd', event.nativeEvent);
-  // };
+  _onTap = event => {
+    console.log('_onTap', event.nativeEvent);
+  };
+  _onViewTap = event => {
+    console.log('_onViewTap', event.nativeEvent);
+  };
+  _onLoadStart = event => {
+    console.log('_onLoadStart', event.nativeEvent);
+  };
+  _onLoad = event => {
+    console.log('_onLoad', event.nativeEvent);
+  };
+  _onLoadEnd = event => {
+    console.log('_onLoadEnd', event.nativeEvent);
+  };
+  _onDrag = event => {
+    console.log('_onLoadEnd', event.nativeEvent);
+  };
 
-  componentWillReceiveProps(nextProps) {
-    if (this.props.scale !== nextProps.scale) {
-      this.ref && this.ref.setScale && this.ref.setScale(1);
-    }
+  componentWillReceiveProps(nextProps) {}
+
+  resetScale() {
+    this.ref && this.ref.resetScale && this.ref.resetScale();
   }
 
   render() {
@@ -49,7 +49,7 @@ export default class Photo extends Component {
           }}
           source={this.props.source}
           // onScale={this._onScale}
-          scale={this.props.scale}
+          // scale={this.props.scale}
           // onTap={this._onTap}
           // onViewTap={this._onViewTap}
           // onDrag={this._onDrag}
